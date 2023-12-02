@@ -5,7 +5,7 @@ const fs = require("fs");
 
 // TODO: Create an array of questions for user input
 const questions = [
-    "What is the name of your project?",
+    "What is the title of your project?",
     "Please describe your project (what is it, your motivation, why it's build, what problem it solves). ",
     "Please provide installation instructions to your project.",
     "How do you use the project? Think about what outputs are expected, how to use it, and what we can use the project for.",
@@ -16,11 +16,26 @@ const questions = [
     "What is your email address?",
 ];
 
+const question_names = ["title", "description", "installation", "usage", "contributions", "tests", "license", "user", "email"];
+
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {}
 
 // TODO: Create a function to initialize app
-function init() {}
+function init() {
+    const userPrompts = [];
+    for (let i = 0; i < question_names.length; i++) {
+        const p = {
+            type: "input",
+            message: questions[i],
+            name: question_names[i],
+        }
+        userPrompts.push(p);
+    }
+
+    inquirer
+        .prompt (userPrompts);
+}
 
 // Function call to initialize app
 init();
