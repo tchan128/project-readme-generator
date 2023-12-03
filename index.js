@@ -20,87 +20,101 @@ const question_names = ["title", "description", "installation", "usage", "contri
         
 
 // TODO: Create a function to write README file
-// function writeToFile(fileName, data) {
-//     let readme = 
-// `<h3 align="center">${data.title}</h3>
+function writeToFile(fileName, data) {
+    let readme = 
+`<h3 align="center">${data.title}</h3>
 
-// <details>
-// <summary>Table of Contents</summary>
-// <ol>
-//     <li><a href="#description">Description</a></li>
-//     <li><a href="#installation">Installation</a></li>
-//     <li><a href="#usage">Usage</a></li>
-//     <li><a href="#contributions">Contributions</a></li>
-//     <li><a href="#tests">Tests</a></li>
-//     <li><a href="#license">License</a></li>
-//     <li><a href="#questions">Questions</a></li>
-// </ol>
-// </details>
+<details>
+<summary>Table of Contents</summary>
+<ol>
+    <li><a href="#description">Description</a></li>
+    <li><a href="#installation">Installation</a></li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#contributions">Contributions</a></li>
+    <li><a href="#tests">Tests</a></li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#questions">Questions</a></li>
+</ol>
+</details>
 
-// ## Description
+## Description
 
-// ${data.description}
+${data.description}
 
-// <p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-// ## Installation
+## Installation
 
-// ${data.installation}
+${data.installation}
 
-// <p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-// ## Usage
+## Usage
 
-// ${data.usage}
+${data.usage}
 
-// <p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-// ## Contributions
+## Contributions
 
-// ${data.contributions}
+${data.contributions}
 
-// <p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-// ## Tests
+## Tests
 
-// ${data.tests}
+${data.tests}
 
-// <p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-// ## License
+## License
 
-// ${data.license}
+${data.license}
 
-// <p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-// ## Questions
+## Questions
 
-// For any questions you have, please do not hesitate to reach out to me. 
+For any questions you have, please do not hesitate to reach out to me. 
 
-// Github Username: ${data.user}
-// Email: ${data.email}
+Github Username: ${data.user}
+Email: ${data.email}
 
-// <p align="right">(<a href="#readme-top">back to top</a>)</p>`
+<p align="right">(<a href="#readme-top">back to top</a>)</p>`
 
-//     fs.writeFile(fileName, readme, (error) =>
-//     error ? console.error(error) : console.log(data))
-// }
+    fs.writeFile(fileName, readme, (error) =>
+    error ? console.error(error) : console.log(data))
+}
 
 // TODO: Create a function to initialize app
 function init() {
     const userPrompts = [];
     for (let i = 0; i < question_names.length; i++) {
-        const p = {
+        if (i === 6) {
+            const p = 
+            {
+                type: "checkbox",
+                choices: ["MIT", "GNU", "Mozilla Public License 2.0", "GNU GPL v3", "BSD 3-Clause License", "Apache 2.0 License"],
+                message: questions[i],
+                name: question_names[i],
+            }
+            userPrompts.push(p);
+        } else {
+        const p = 
+        {
             type: "input",
             message: questions[i],
             name: question_names[i],
         }
         userPrompts.push(p);
+        }
     }
 
     inquirer
-        .prompt ([userPrompts])
-        // .then (writeToFile("README.md", JSON.stringify(userPrompts)));
+        .prompt (userPrompts)
+        .then((responses) => {
+            writeToFile("README.md", responses)
+        })
 }
 
 // Function call to initialize app
