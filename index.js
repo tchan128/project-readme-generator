@@ -2,6 +2,7 @@
 
 const inquirer = require("inquirer");
 const fs = require("fs");
+const { promiseHooks } = require("v8");
 
 // TODO: Create an array of questions for user input
 const questions = [
@@ -21,8 +22,11 @@ const question_names = ["title", "description", "installation", "usage", "contri
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
+    let badge = badgeGenerator(data.license);
     let readme = 
 `<h3 align="center">${data.title}</h3>
+
+${badge}
 
 <details>
 <summary>Table of Contents</summary>
@@ -69,7 +73,7 @@ ${data.tests}
 
 ## License
 
-${data.license}
+${data.license} used for this project. Please refer to repo for more information.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -86,6 +90,22 @@ Email: ${data.email}
     error ? console.error(error) : console.log(data))
 }
 
+// Function to generate correct license badge
+
+function badgeGenerator(projectLicense) {
+    if (projectLicense === "MIT") {
+        return "[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)";
+    } else if (projectLicense === "GNU") {
+        return "[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)"
+    } else if (projectLicense === "Mozilla Public License 2.0") {
+        return "[![License: MPL 2.0](https://img.shields.io/badge/License-MPL_2.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)"
+    } else if (projectLicense === "BSD 3-Clause License") {
+        return "[![License](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)"
+    } else {
+        return "[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)"
+    }
+}
+
 // TODO: Create a function to initialize app
 function init() {
     const userPrompts = [];
@@ -94,7 +114,7 @@ function init() {
             const p = 
             {
                 type: "checkbox",
-                choices: ["MIT", "GNU", "Mozilla Public License 2.0", "GNU GPL v3", "BSD 3-Clause License", "Apache 2.0 License"],
+                choices: ["MIT", "GNU", "Mozilla Public License 2.0", "BSD 3-Clause License", "Apache 2.0 License"],
                 message: questions[i],
                 name: question_names[i],
             }
