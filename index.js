@@ -16,10 +16,75 @@ const questions = [
     "What is your email address?",
 ];
 
-const question_names = ["title", "description", "installation", "usage", "contributions", "tests", "license", "user", "email"];
+const question_names = ["title", "description", "installation", "usage", "contributions", "tests", "license", "user", "email",];
+        
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+// function writeToFile(fileName, data) {
+//     let readme = 
+// `<h3 align="center">${data.title}</h3>
+
+// <details>
+// <summary>Table of Contents</summary>
+// <ol>
+//     <li><a href="#description">Description</a></li>
+//     <li><a href="#installation">Installation</a></li>
+//     <li><a href="#usage">Usage</a></li>
+//     <li><a href="#contributions">Contributions</a></li>
+//     <li><a href="#tests">Tests</a></li>
+//     <li><a href="#license">License</a></li>
+//     <li><a href="#questions">Questions</a></li>
+// </ol>
+// </details>
+
+// ## Description
+
+// ${data.description}
+
+// <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+// ## Installation
+
+// ${data.installation}
+
+// <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+// ## Usage
+
+// ${data.usage}
+
+// <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+// ## Contributions
+
+// ${data.contributions}
+
+// <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+// ## Tests
+
+// ${data.tests}
+
+// <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+// ## License
+
+// ${data.license}
+
+// <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+// ## Questions
+
+// For any questions you have, please do not hesitate to reach out to me. 
+
+// Github Username: ${data.user}
+// Email: ${data.email}
+
+// <p align="right">(<a href="#readme-top">back to top</a>)</p>`
+
+//     fs.writeFile(fileName, readme, (error) =>
+//     error ? console.error(error) : console.log(data))
+// }
 
 // TODO: Create a function to initialize app
 function init() {
@@ -34,7 +99,8 @@ function init() {
     }
 
     inquirer
-        .prompt (userPrompts);
+        .prompt ([userPrompts])
+        // .then (writeToFile("README.md", JSON.stringify(userPrompts)));
 }
 
 // Function call to initialize app
