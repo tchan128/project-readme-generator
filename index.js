@@ -87,8 +87,8 @@ ${data.license} used for this project. Please refer to repo for more information
 
 For any questions you have, please do not hesitate to reach out to me. 
 
-Github Username: ${data.user}
-Email: ${data.email}`
+- Github Username: ${data.user}
+- Email: ${data.email}`
 
     fs.writeFile(fileName, readme, (error) =>
     error ? console.error(error) : console.log(data))

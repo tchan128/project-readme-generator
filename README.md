@@ -72,5 +72,5 @@ MIT License was used for this project. Please refer to the repo for more informa
 
 For any questions you have, please do not hesitate to reach out to me. 
 
-Github Username: tchan128
-Email: tchan12899@gmail.com
+- Github Username: tchan128
+- Email: tchan12899@gmail.com
