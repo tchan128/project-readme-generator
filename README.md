@@ -1,6 +1,6 @@
 <br />
 <div align="center">
-    <a href="https://github.com/tchan128/project-readme-generator"><img src="./assets/logo.png" alt="Logo" width="80" height="80"></a>
+    <a href="https://github.com/tchan128/project-readme-generator"><img src="./Assets/generator.png" alt="Logo" width="80" height="80"></a>
     <h3 align="center">README Generator</h3>
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
