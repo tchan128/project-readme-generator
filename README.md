@@ -74,3 +74,4 @@ For any questions you have, please do not hesitate to reach out to me.
 
 - Github Username: tchan128
 - Email: tchan12899@gmail.com
+- Github Repo: https://github.com/tchan128/project-readme-generator
