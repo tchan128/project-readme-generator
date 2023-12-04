@@ -121,7 +121,7 @@ function init() {
     inquirer
         .prompt (userPrompts)
         .then((responses) => {
-            writeToFile("SAMPLE_README.md", responses)
+            writeToFile("README.md", responses)
         })
 }
 
